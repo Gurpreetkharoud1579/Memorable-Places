@@ -48,7 +48,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if(grantResults.length>0 && grantResults[0]== PackageManager.PERMISSION_GRANTED){
              if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED){
-                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000,1000,locationListener);
+                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000,3000,locationListener);
              }
         }
     }
@@ -94,7 +94,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             };
             // if permission given then move camera to latest location else request for permission
             if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED){
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000,1000,locationListener);
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000,3000,locationListener);
                 Location lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                 centerMapLocation(lastLocation , "Current Location");
             }else{
